@@ -1,0 +1,38 @@
+---
+import "../styles/global.css";
+
+const {
+  title = "Leo Sutton — Professional profile",
+  description = "Professional profile for Leo Sutton: finance, transformation, operating rhythm, and practical AI-enabled ways of working.",
+} = Astro.props;
+---
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href="https://leosutton.me/" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="container nav" aria-label="Primary navigation">
+        <a class="brand" href="/">Leo Sutton</a>
+        <div class="nav-links">
+          <a href="#profile">Profile</a>
+          <a href="#focus">Focus</a>
+          <a href="#work">Work</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="footer">
+      <div class="container">© {new Date().getFullYear()} Leo Sutton. Built as a fast, static professional profile.</div>
+    </footer>
+  </body>
+</html>
