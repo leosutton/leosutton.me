@@ -20,8 +20,12 @@ assert.match(index, /Finance transformation/, "homepage should cover finance tra
 assert.match(index, /ERP implementation/, "homepage should cover ERP implementation");
 assert.match(index, /Change management/, "homepage should cover change management");
 assert.match(index, /LinkedIn/, "homepage should link to LinkedIn");
+assert.match(index, /Contact on LinkedIn/, "homepage primary contact action should be LinkedIn-only");
 assert.match(index, /\/leo-sutton-profile\.jpg/, "homepage should render the verified profile photo");
 assert.match(index, /Portrait of Leo Sutton in a navy jacket and white shirt/, "profile photo should have descriptive alt text");
+assert.doesNotMatch(index, /mailto:/i, "homepage should not publish an email contact link");
+assert.doesNotMatch(index, /protonmail/i, "homepage should not mention ProtonMail as a public contact method");
+assert.doesNotMatch(index, /leo\.sutton@/i, "homepage should not publish Leo's email address");
 assert.doesNotMatch(index, /turn complexity into clear operating rhythm/i, "copy should avoid the previous more hyperbolic hero line");
 assert.doesNotMatch(index, /theatre/i, "copy should avoid overly pointed language");
 assert.match(index, /Contact/i, "homepage should include a contact section");
