@@ -3,9 +3,11 @@ import { readFileSync, existsSync } from "node:fs";
 
 const indexPath = new URL("../src/pages/index.astro", import.meta.url);
 const astroConfigPath = new URL("../astro.config.mjs", import.meta.url);
+const profilePhotoPath = new URL("../public/leo-sutton-profile.jpg", import.meta.url);
 
 assert.equal(existsSync(indexPath), true, "homepage should exist at src/pages/index.astro");
 assert.equal(existsSync(astroConfigPath), true, "Astro config should exist");
+assert.equal(existsSync(profilePhotoPath), true, "verified profile photo should exist in public assets");
 
 const index = readFileSync(indexPath, "utf8");
 const config = readFileSync(astroConfigPath, "utf8");
@@ -18,6 +20,8 @@ assert.match(index, /Finance transformation/, "homepage should cover finance tra
 assert.match(index, /ERP implementation/, "homepage should cover ERP implementation");
 assert.match(index, /Change management/, "homepage should cover change management");
 assert.match(index, /LinkedIn/, "homepage should link to LinkedIn");
+assert.match(index, /\/leo-sutton-profile\.jpg/, "homepage should render the verified profile photo");
+assert.match(index, /Portrait of Leo Sutton in a navy jacket and white shirt/, "profile photo should have descriptive alt text");
 assert.doesNotMatch(index, /turn complexity into clear operating rhythm/i, "copy should avoid the previous more hyperbolic hero line");
 assert.doesNotMatch(index, /theatre/i, "copy should avoid overly pointed language");
 assert.match(index, /Contact/i, "homepage should include a contact section");
